@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#FFE6E6"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/nameField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name (autofilled by ID)"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/ageField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Age (autofilled by ID)"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/bioField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Write a little bit about yourself (100 words max)"
+        android:gravity="start|top"
+        android:minLines="4"
+        android:maxLines="5"
+        android:inputType="textMultiLine"/>
+
+    <Button
+        android:id="@+id/uploadPhotosButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload Photos"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>
