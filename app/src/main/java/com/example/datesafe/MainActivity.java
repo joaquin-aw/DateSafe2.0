@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("MainActivity", "UI elements initialized");
         // Set up the behavior for buttons
+        assert loginButton != null;
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
