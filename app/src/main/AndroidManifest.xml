@@ -29,6 +29,18 @@
         <activity
             android:name=".GovernmentId">
         </activity>
+        <activity
+            android:name=".LivePhoto">
+        </activity>
+        <activity
+            android:name=".PicturesMatch">
+        </activity>
+        <activity
+            android:name=".CreateProfile">
+        </activity>
+<!--        <activity-->
+<!--            android:name=".SwipeActivity">-->
+<!--        </activity>-->
     </application>
 
 </manifest>

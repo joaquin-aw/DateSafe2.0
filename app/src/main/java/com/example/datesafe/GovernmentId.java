@@ -48,7 +48,7 @@ public class GovernmentId extends AppCompatActivity {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             //imageView.setImageBitmap(photo); // Display the captured photo
             Intent newIntent = new Intent(GovernmentId.this, LivePhoto.class);
-//            newIntent.putExtra("image", photo);
+            newIntent.putExtra("image", photo);
             startActivity(newIntent);
         }
     }

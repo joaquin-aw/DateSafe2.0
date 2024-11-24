@@ -42,6 +42,9 @@ public class LivePhoto extends AppCompatActivity {
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             //imageView.setImageBitmap(photo); // Display the captured photo
+            Intent newIntent = new Intent(LivePhoto.this, PicturesMatch.class);
+            newIntent.putExtra("image", photo);
+            startActivity(newIntent);
         }
     }
 }
