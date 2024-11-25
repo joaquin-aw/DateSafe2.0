@@ -20,8 +20,8 @@ public class CreateProfile extends AppCompatActivity {
         });
 
         doneButton.setOnClickListener(v -> {
-//            Intent intent = new Intent(CreateProfile.this, SwipeActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent(CreateProfile.this, Swipe.class);
+            startActivity(intent);
         });
     }
 }
