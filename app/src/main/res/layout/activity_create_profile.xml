@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name (autofilled by ID)"
+        android:textColorHint="@color/black"
         android:layout_marginBottom="16dp"/>
 
     <EditText
@@ -20,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Age (autofilled by ID)"
+        android:textColorHint="@color/black"
         android:layout_marginBottom="16dp"/>
 
     <EditText
@@ -27,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Write a little bit about yourself (100 words max)"
+        android:textColorHint="@color/black"
         android:gravity="start|top"
         android:minLines="4"
         android:maxLines="5"

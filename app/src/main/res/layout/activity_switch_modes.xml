@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#FFE6E6"
+    android:padding="32dp">
+
+    <!-- Heart Icon -->
+    <ImageView
+        android:id="@+id/heartIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/heart_icon"
+        android:contentDescription="Heart Icon"
+        android:layout_marginBottom="32dp"/>
+
+    <!-- Event Mode Button -->
+    <Button
+        android:id="@+id/eventModeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Event Mode"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#3F51B5"
+        android:textColor="#FFFFFF"
+        android:padding="20dp"/>
+
+    <!-- Swipe Mode Button -->
+    <Button
+        android:id="@+id/swipeModeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Swipe Mode"
+        android:textSize="18sp"
+        android:backgroundTint="#3F51B5"
+        android:textColor="#FFFFFF"
+        android:padding="20dp"/>
+
+</LinearLayout>
