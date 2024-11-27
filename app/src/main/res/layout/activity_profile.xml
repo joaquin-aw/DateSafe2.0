@@ -47,31 +47,82 @@
         android:textColor="@android:color/black"
         android:textSize="16sp" />
 
-    <!-- Like Button with Clickable Transparent Overlay -->
     <FrameLayout
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp">
+        android:layout_marginStart="16dp">
 
-        <!-- Heart Icon -->
         <ImageView
-            android:id="@+id/heartIcon"
+            android:id="@+id/x_icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/heart_icon"
-            android:contentDescription="Heart Icon" />
+            android:src="@drawable/x_icon"
+            android:contentDescription="X Icon" />
 
-        <!-- Transparent Button for Click -->
         <ImageButton
-            android:id="@+id/like_button"
+            android:id="@+id/x_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:contentDescription="Like Button" />
+            android:contentDescription="X Button" />
     </FrameLayout>
+
+    <!-- Like Button with Clickable Transparent Overlay -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="end|center_vertical">
+
+        <!-- Warning Button -->
+        <FrameLayout
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp">
+
+            <ImageView
+                android:id="@+id/warning_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/warning_symbol"
+                android:contentDescription="Warning Icon" />
+
+            <ImageButton
+                android:id="@+id/warning_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:contentDescription="Warning Button" />
+        </FrameLayout>
+
+        <!-- Like Button -->
+        <FrameLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp">
+
+            <ImageView
+                android:id="@+id/heartIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/heart_icon"
+                android:contentDescription="Heart Icon" />
+
+            <ImageButton
+                android:id="@+id/like_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:contentDescription="Like Button" />
+        </FrameLayout>
+    </LinearLayout>
+
 
 </RelativeLayout>
 
