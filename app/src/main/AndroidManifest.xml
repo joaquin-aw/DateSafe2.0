@@ -47,6 +47,9 @@
         <activity
             android:name=".EventActivity">
         </activity>
+        <activity
+            android:name=".LoadingActivity">
+        </activity>
 
     </application>
 
