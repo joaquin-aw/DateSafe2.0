@@ -25,7 +25,7 @@ public class WarningMan extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(WarningMan.this);
             builder.setTitle("Submit Warning");
             builder.setMessage("Please enter the reason for submitting a warning:");
-            builder.setView(reasonEditText); // Set the EditText inside the dialog
+            builder.setView(reasonEditText);
 
             // Set the Submit button functionality
             builder.setPositiveButton("Submit", (dialog, which) -> {

@@ -44,6 +44,10 @@
         <activity
             android:name=".WarningMan">
         </activity>
+        <activity
+            android:name=".EventActivity">
+        </activity>
+
     </application>
 
 </manifest>

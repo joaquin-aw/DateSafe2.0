@@ -20,5 +20,10 @@ public class SwitchModes extends AppCompatActivity {
             Intent intent = new Intent(SwitchModes.this, Swipe.class);
             startActivity(intent);
         });
+
+        eventButton.setOnClickListener(v -> {
+            Intent intent = new Intent(SwitchModes.this, EventActivity.class);
+            startActivity(intent);
+        });
     }
 }
