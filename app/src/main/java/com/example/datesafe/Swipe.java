@@ -9,8 +9,5 @@ public class Swipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_screen);
 
-        findViewById(R.id.startSwipingButton).setOnClickListener(v -> {
-            // Handle swiping action (e.g., navigate to a new activity or fragment)
-        });
     }
 }
