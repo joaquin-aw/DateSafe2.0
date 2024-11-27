@@ -1,4 +1,5 @@
 package com.example.datesafe;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,13 +33,32 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         Event event = eventList.get(position);
+
+        // Set event details
         holder.eventName.setText(event.getName());
         holder.eventDate.setText("Date: " + event.getDate());
         holder.eventDescription.setText(event.getDescription());
 
-        holder.signUpButton.setOnClickListener(v ->
-                Toast.makeText(context, "Signed up for " + event.getName(), Toast.LENGTH_SHORT).show()
-        );
+        // Update button state based on sign-up status
+        if (event.isSignedUp()) {
+            holder.signUpButton.setText("Unregister");
+        } else {
+            holder.signUpButton.setText("Sign Up");
+        }
+
+        // Button click listener
+        holder.signUpButton.setOnClickListener(v -> {
+            if (event.isSignedUp()) {
+                // Unregister logic
+                event.setSignedUp(false);
+                Toast.makeText(context, "Unregistered from " + event.getName(), Toast.LENGTH_SHORT).show();
+            } else {
+                // Sign-up logic
+                event.setSignedUp(true);
+                Toast.makeText(context, "Signed up for " + event.getName(), Toast.LENGTH_SHORT).show();
+            }
+            notifyItemChanged(position); // Refresh button state
+        });
     }
 
     @Override
