@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFE6E6"
+    android:padding="16dp">
+
+    <!-- Name and Age -->
+    <TextView
+        android:id="@+id/name_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="John Doe, 28"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold" />
+
+    <!-- Profile Image -->
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:layout_below="@id/name_age"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/bad_man"
+        android:scaleType="centerCrop"
+        android:background="@drawable/image_border"
+        android:contentDescription="Profile Image" />
+
+    <!-- Brief Textbox -->
+    <TextView
+        android:id="@+id/bio_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_image"
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/textbox_background"
+        android:padding="16dp"
+        android:text="Hi there! I'm John I love dark alleys and luring people to my basement"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <!-- Like Button with Clickable Transparent Overlay -->
+    <FrameLayout
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp">
+
+        <!-- Heart Icon -->
+        <ImageView
+            android:id="@+id/heartIcon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/heart_icon"
+            android:contentDescription="Heart Icon" />
+
+        <!-- Transparent Button for Click -->
+        <ImageButton
+            android:id="@+id/like_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:contentDescription="Like Button" />
+    </FrameLayout>
+
+</RelativeLayout>
