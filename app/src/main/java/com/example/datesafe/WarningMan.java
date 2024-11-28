@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,8 @@ public class WarningMan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_warning_profile);
+
+        TextView warningNote = findViewById(R.id.WarningNote);
 
         findViewById(R.id.warning_button).setOnClickListener(v -> {
             // Create an EditText to allow the user to input the reason for the warning
@@ -35,6 +38,7 @@ public class WarningMan extends AppCompatActivity {
                 } else {
                     // Handle the reason input (e.g., save it or send it to the server)
                     Toast.makeText(WarningMan.this, "Warning submitted: " + reason, Toast.LENGTH_SHORT).show();
+                    warningNote.setVisibility(View.VISIBLE);
                     // Optionally, dismiss the dialog after submission
                     dialog.dismiss();
                 }
@@ -45,6 +49,7 @@ public class WarningMan extends AppCompatActivity {
 
             // Show the dialog
             builder.show();
+
         });
     }
 }

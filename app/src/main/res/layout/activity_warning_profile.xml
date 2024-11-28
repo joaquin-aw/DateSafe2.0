@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFE6E6"
@@ -48,19 +49,20 @@
         android:textSize="16sp" />
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="35dp"
         android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="16dp">
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="20dp">
 
         <ImageView
             android:id="@+id/x_icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/x_icon"
-            android:contentDescription="X Icon" />
+            android:contentDescription="X Icon"
+            android:src="@drawable/x_icon" />
 
         <ImageButton
             android:id="@+id/x_button"
@@ -72,14 +74,15 @@
 
     <!-- Like Button with Clickable Transparent Overlay -->
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginEnd="16dp"
-        android:gravity="end|center_vertical">
+        android:layout_marginBottom="16dp"
+        android:gravity="end|center_vertical"
+        android:orientation="horizontal">
 
         <!-- Warning Button -->
         <FrameLayout
@@ -91,15 +94,19 @@
                 android:id="@+id/warning_icon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/warning_symbol"
-                android:contentDescription="Warning Icon" />
+                android:contentDescription="Warning Icon"
+                android:src="@drawable/warning_symbol" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/warning_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:contentDescription="Warning Button" />
+                android:layout_width="62dp"
+                android:layout_height="58dp"
+                android:layout_marginBottom="636dp"
+                android:background="#00FFFFFF"
+                android:contentDescription="Submit Warning"
+                android:visibility="visible"
+                tools:visibility="visible" />
+
         </FrameLayout>
 
         <!-- Like Button -->
@@ -111,8 +118,8 @@
                 android:id="@+id/heartIcon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/heart_icon"
-                android:contentDescription="Heart Icon" />
+                android:contentDescription="Heart Icon"
+                android:src="@drawable/heart_icon" />
 
             <ImageButton
                 android:id="@+id/like_button"
@@ -122,5 +129,21 @@
                 android:contentDescription="Like Button" />
         </FrameLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/WarningNote"
+        android:layout_width="131dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/profile_image"
+        android:layout_alignBottom="@+id/profile_image"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginBottom="525dp"
+        android:layout_toEndOf="@+id/name_age"
+        android:text="High Risk User"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
 
 </RelativeLayout>
