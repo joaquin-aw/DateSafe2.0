@@ -2,23 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions for Camera and Media Access -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+
+    <!-- Ensure that the Camera feature is available -->
     <uses-feature android:name="android.hardware.camera" android:required="true" />
 
+    <!-- App configuration -->
     <application
         android:icon="@mipmap/datesafe_icon"
         android:roundIcon="@mipmap/datesafe_icon_round"
-
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-
         android:label="@string/app_name"
-
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:targetApi="31">
+        tools:targetApi="34">
+
+        <!-- Activities -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -26,38 +32,19 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".GovernmentId">
-        </activity>
-        <activity
-            android:name=".LivePhoto">
-        </activity>
-        <activity
-            android:name=".PicturesMatch">
-        </activity>
-        <activity
-            android:name=".CreateProfile">
-        </activity>
-        <activity
-            android:name=".Swipe">
-        </activity>
-        <activity
-            android:name=".WarningMan">
-        </activity>
-        <activity
-            android:name=".SwitchModes">
-        </activity>
-        <activity
-            android:name=".EventActivity">
-        </activity>
-        <activity
-            android:name=".LoadingActivity">
-        </activity>
-
+        <!-- Additional Activities -->
+        <activity android:name=".GovernmentId" />
+        <activity android:name=".LivePhoto" />
+        <activity android:name=".PicturesMatch" />
+        <activity android:name=".CreateProfile" />
+        <activity android:name=".Swipe" />
+        <activity android:name=".WarningMan" />
+        <activity android:name=".SwitchModes" />
+        <activity android:name=".EventActivity" />
+        <activity android:name=".LoadingActivity" />
 
     </application>
 

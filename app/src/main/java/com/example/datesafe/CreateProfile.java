@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,38 +29,44 @@ public class CreateProfile extends AppCompatActivity {
 
         Button uploadPhotosButton = findViewById(R.id.uploadPhotosButton);
         Button doneButton = findViewById(R.id.doneButton);
-        profileImageView = findViewById(R.id.profileImageView);  // Assuming you have an ImageView to display the selected image
+        profileImageView = findViewById(R.id.profileImageView);
 
-        uploadPhotosButton.setOnClickListener(v -> {
-            // Check if we have permission to read selected media (Android 14+)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-                // On Android 14+, permission check for the new photo picker
-                if (ContextCompat.checkSelfPermission(CreateProfile.this, android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED)
-                        == PackageManager.PERMISSION_GRANTED) {
-                    openPhotoPicker();
-                } else {
-                    // Request the new photo picker permission
-                    ActivityCompat.requestPermissions(CreateProfile.this,
-                            new String[]{android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED},
-                            REQUEST_PERMISSION);
-                }
-            } else {
-                // For devices below Android 14, use the traditional image picker
-                if (ContextCompat.checkSelfPermission(CreateProfile.this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                        == PackageManager.PERMISSION_GRANTED) {
-                    openImagePicker();
-                } else {
-                    ActivityCompat.requestPermissions(CreateProfile.this,
-                            new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
-                            REQUEST_PERMISSION);
-                }
-            }
-        });
+        // Handle click event for upload photos button
+        uploadPhotosButton.setOnClickListener(v -> checkPermissions());
 
+        // Handle click event for done button (just navigate to next activity)
         doneButton.setOnClickListener(v -> {
             Intent intent = new Intent(CreateProfile.this, SwitchModes.class);
             startActivity(intent);
         });
+    }
+
+    // Check permissions based on Android version
+    private void checkPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {  // Android 14+
+            if (ContextCompat.checkSelfPermission(CreateProfile.this, android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED)
+                    != PackageManager.PERMISSION_GRANTED) {
+                // Request permission for accessing selected visual media
+                ActivityCompat.requestPermissions(CreateProfile.this,
+                        new String[]{android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED},
+                        REQUEST_PERMISSION);
+            } else {
+                // Permission already granted, proceed with photo picker
+                openPhotoPicker();
+            }
+        } else {
+            // For devices below Android 14, use traditional permission check
+            if (ContextCompat.checkSelfPermission(CreateProfile.this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                // Request permission for reading external storage
+                ActivityCompat.requestPermissions(CreateProfile.this,
+                        new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                        REQUEST_PERMISSION);
+            } else {
+                // Permission already granted, proceed with image picker
+                openImagePicker();
+            }
+        }
     }
 
     // Open the new photo picker for Android 14+ users
@@ -75,15 +82,17 @@ public class CreateProfile extends AppCompatActivity {
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 
-    // Handle the result of the photo picker
+    // Handle the result of the photo picker or traditional image picker
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri imageUri = data.getData();
-            // Display the selected image in the ImageView
+            // Display the selected image in ImageView
             profileImageView.setImageURI(imageUri);
+        } else {
+            Toast.makeText(this, "Image selection failed!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -94,16 +103,16 @@ public class CreateProfile extends AppCompatActivity {
 
         if (requestCode == REQUEST_PERMISSION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted, proceed with the image picker
+                // Permission granted, proceed with opening the photo picker
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
                     openPhotoPicker();
                 } else {
                     openImagePicker();
                 }
             } else {
-                // Permission denied, you can show a message to the user
+                // Permission denied, show message to user
+                Toast.makeText(this, "Permission denied, cannot access photos.", Toast.LENGTH_SHORT).show();
             }
         }
     }
 }
-

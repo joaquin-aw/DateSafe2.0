@@ -14,7 +14,8 @@
         android:layout_width="300dp"
         android:layout_height="400dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/default_image"
+        android:background="@drawable/image_border"
         android:contentDescription="Profile Image"
         android:scaleType="centerCrop"/>
 
