@@ -9,6 +9,8 @@ import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -36,11 +38,9 @@ public class CreateProfile extends AppCompatActivity {
                 openImagePicker();
             } else {
                 // Permission not granted, request permission
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    ActivityCompat.requestPermissions(CreateProfile.this,
-                            new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
-                            REQUEST_PERMISSION);
-                }
+                ActivityCompat.requestPermissions(CreateProfile.this,
+                        new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                        REQUEST_PERMISSION);
             }
         });
 
@@ -52,8 +52,16 @@ public class CreateProfile extends AppCompatActivity {
 
     // Open image picker after permission is granted
     private void openImagePicker() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            // For Android 14+, use the new photo picker
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        } else {
+            // For earlier Android versions, use the old method
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        }
     }
 
     // Handle the result of the image picker
@@ -70,7 +78,7 @@ public class CreateProfile extends AppCompatActivity {
 
     // Handle the result of the permission request
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == REQUEST_PERMISSION) {
@@ -83,4 +91,3 @@ public class CreateProfile extends AppCompatActivity {
         }
     }
 }
-
